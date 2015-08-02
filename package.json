@@ -1,0 +1,26 @@
+{
+  "name": "buildscript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^0.24.1",
+    "default": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "lint": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinkingshriek/buildscript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinkingshriek/buildscript/issues"
+  },
+  "homepage": "https://github.com/sinkingshriek/buildscript#readme"
+}
