@@ -2,6 +2,7 @@
   "ecmaFeatures": {},
   "env": {
     "node": true,
+    "es6": true
   },
   "rules": {
     "requirePaddingNewLinesAfterBlocks": 0,
@@ -11,7 +12,7 @@
     "no-caller": 0,
     "no-catch-shadow": 0,
     "no-cond-assign": 2,
-    "no-console": 2,
+    "no-console": 0,
     "no-constant-condition": 2,
     "no-continue": 0,
     "no-control-regex": 2,
