@@ -7,7 +7,7 @@
     "default": "^0.1.1"
   },
   "bin": {
-    "buildscript": "bin/cli"
+    "build": "bin/cli"
   },
   "devDependencies": {
     "babel": "^5.8.21",
