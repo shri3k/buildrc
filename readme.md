@@ -5,7 +5,7 @@ The main idea here is for you to have your runnable scripts in an external file 
 Think of this as a your barebone build tool if you don't want to install `gulp` or `grunt`.
 
 ## Quick Demo
-<iframe src="http://showterm.io/e820ca3ff0aeabea1640e" width="640" height="480"></iframe>
+http://showterm.io/e820ca3ff0aeabea1640e"
 
 ## Installation
 ```js
