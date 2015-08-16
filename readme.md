@@ -1,4 +1,4 @@
-# buildscript
+# buildscript | [![Build Status](https://travis-ci.org/sinkingshriek/buildscript.svg?branch=master)](https://travis-ci.org/sinkingshriek/buildscript)
 Usually installed globally, this package accepts a seperate file which has JSON object just like your `package.json` file and then merges it to your `scripts` object inside `package.json` file.
 
 The main idea here is for you to have your runnable scripts in an external file instead of jamming everything inside `package.json`  
