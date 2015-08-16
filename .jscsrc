@@ -1,5 +1,7 @@
 {
   "preset": "airbnb",
+  "excludeFiles": ["tmp/**"],
   "requirePaddingNewLinesAfterBlocks": null,
-  "requireTrailingComma": null
+  "requireTrailingComma": null,
+  "disallowQuotedKeysInObjects": null
 }

@@ -1,35 +1,39 @@
 #!/usr/bin/env node
 
 var lib = require('../lib/');
-var exec = require('child_process').exec;
 var readline = require('readline');
 var fs = require('fs');
 var arg = process.argv[2] || '.buildscript';
-if (lib(arg)) {
-  var files = fs.createReadStream('./package.json');
-  var files2 = fs.readFileSync('./.buildscript', {
-    encoding: 'utf8'
-  });
-  var buildLines = files2.split('\n');
-  var i = readline.createInterface({
-    input: files
-  });
-  i.on('line', function(ln) {
-    var hasKey = buildLines.some(function(i) {
-      var keyRegx = /(?!").*?(?=":)/;
-      var pkgLine = ln.trim();
-      var buildLine = i.trim();
-      var pkgMatch = buildLine.match(keyRegx) === null ? NaN : buildLine.match(keyRegx)[0];
-      var buildMatch = pkgLine.match(keyRegx) === null ? NaN : pkgLine.match(keyRegx)[0];
-      return pkgMatch === buildMatch;
+lib(arg)
+  .then(function() {
+    var files = fs.createReadStream('./package.json');
+    var files2 = fs.readFileSync('./.buildscript', {
+      encoding: 'utf8'
     });
-    if (hasKey) {
-      console.log('\x1b[35m', ln, '\x1b[0m');
-    } else {
-      console.log(ln);
-    }
+    var buildLines = files2.split('\n');
+    var i = readline.createInterface({
+      input: files
+    });
+    i.on('line', function(ln) {
+      var hasKey = buildLines.some(function(i) {
+        var keyRegx = /(?!").*?(?=":)/;
+        var pkgLine = ln.trim();
+        var buildLine = i.trim();
+        var pkgMatch = buildLine.match(keyRegx) === null ? NaN : buildLine.match(keyRegx)[0];
+        var buildMatch = pkgLine.match(keyRegx) === null ? NaN : pkgLine.match(keyRegx)[0];
+        return pkgMatch === buildMatch;
+      });
+      if (hasKey) {
+        console.log('\x1b[35m', ln, '\x1b[0m');
+      } else {
+        console.log(ln);
+      }
+    });
+    files.on('end', function() {
+      i.close();
+    });
+  })
+  .catch(function(err) {
+    process.stderr.write(err);
+    process.exit(1);
   });
-  files.on('end', function() {
-    i.close();
-  });
-}

@@ -2,7 +2,7 @@
   "name": "buildscript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "eslint": "^0.24.1",
     "default": "^0.1.1"
@@ -16,17 +16,19 @@
     "winston": "^1.0.1"
   },
   "scripts": {
-    "test": "babel tests/src/*.js --out-dir ./  && tape tests/src/*.js",
-    "start": "node index.js",
+    "babel": "babel tests/src/*.js --out-dir ./",
     "lint": "eslint ./",
     "jscs": "jscs ./",
-    "prod": "npm run lint && npm run jscs && npm start"
+    "linters": "npm run lint && npm run jscs",
+    "test:dev": "npm run babel && tape tests/src/*.js",
+    "test": "npm run linters && tape tests/src/*.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sinkingshriek/buildscript.git"
   },
-  "author": "",
+  "author": "Yojan Shrestha",
+  "preferGlobal": true,
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sinkingshriek/buildscript/issues"
