@@ -3,11 +3,11 @@
 var lib = require('../lib/');
 var readline = require('readline');
 var fs = require('fs');
-var arg = process.argv[2] || '.buildscript';
+var arg = process.argv[2] || '.buildrc';
 lib(arg)
   .then(function() {
     var files = fs.createReadStream('./package.json');
-    var files2 = fs.readFileSync('./.buildscript', {
+    var files2 = fs.readFileSync('./.buildrc', {
       encoding: 'utf8'
     });
     var buildLines = files2.split('\n');

@@ -15,11 +15,11 @@ var cfgFile = '.buildrc';
 var buildrc;
 
 var beforeEach = function beforeEach(test, beforeEachStep) {
-  return function(name, cbFromAfterEach) {
+  return function (name, cbFromAfterEach) {
     console.log('beforeEach closure');
-    test(name, function(t) {
+    test(name, function (t) {
       var _end = t.end;
-      t.end = function() {
+      t.end = function () {
         t.end = _end;
         cbFromAfterEach(t);
       };
@@ -29,11 +29,11 @@ var beforeEach = function beforeEach(test, beforeEachStep) {
 };
 
 var afterEach = function afterEach(test, afterEachStep) {
-  return function(name, spec) {
+  return function (name, spec) {
     console.log('afterEach closure');
-    test(name, function(t) {
+    test(name, function (t) {
       var _end = t.end;
-      t.end = function() {
+      t.end = function () {
         t.end = _end;
         afterEachStep(t);
       };
@@ -41,7 +41,7 @@ var afterEach = function afterEach(test, afterEachStep) {
     });
   };
 };
-test = beforeEach(test, function(t) {
+test = beforeEach(test, function (t) {
   console.log('beforeEach');
   buildrc = {
     'test': 'node test',
@@ -49,7 +49,7 @@ test = beforeEach(test, function(t) {
   };
   setRightPath();
   fs.writeFileSync('./' + cfgFile, JSON.stringify(buildrc));
-  exec('npm init -y', function(err) {
+  exec('npm init -y', function (err) {
     if (err) {
       process.stderr.write(err.toString());
       process.exit(1);
@@ -58,7 +58,7 @@ test = beforeEach(test, function(t) {
   });
 });
 
-test = afterEach(test, function(t) {
+test = afterEach(test, function (t) {
   console.log('afterEach');
   setRightPath();
   fs.unlinkSync(cfgFile);
@@ -72,9 +72,9 @@ function setRightPath() {
   process.chdir(path.resolve(__dirname));
 }
 
-test('matches the script object in buildscript with package.json', function(t) {
-  lib(path.resolve(__dirname, './' + cfgFile), path.resolve(__dirname, './package.json')).then((function(t) {
-    return function() {
+test('matches the script object in buildscript with package.json', function (t) {
+  lib(path.resolve(__dirname, './' + cfgFile), path.resolve(__dirname, './package.json')).then((function (t) {
+    return function () {
       setRightPath();
       var pkgFile = JSON.parse(fs.readFileSync('./package.json'));
       t.deepEqual(pkgFile.scripts, buildrc, 'script object should be equal');
@@ -83,13 +83,13 @@ test('matches the script object in buildscript with package.json', function(t) {
   })(t));
 });
 
-test('does not match the script object on package.json', function(t) {
+test('does not match the script object on package.json', function (t) {
   var buildrc2 = {
     'random': 'this is random',
     'blah': 'hey'
   };
-  lib(path.resolve(__dirname, './' + cfgFile), path.resolve(__dirname, './package.json')).then((function(t) {
-    return function() {
+  lib(path.resolve(__dirname, './' + cfgFile), path.resolve(__dirname, './package.json')).then((function (t) {
+    return function () {
       setRightPath();
       var pkgFile = JSON.parse(fs.readFileSync('./package.json'));
       t.notDeepEqual(pkgFile.scripts, buildrc2, 'script should not be equal');
@@ -98,9 +98,9 @@ test('does not match the script object on package.json', function(t) {
   })(t));
 });
 
-test('executes as cli with matching object', function(t) {
+test('executes as cli with matching object', function (t) {
   setRightPath();
-  exec('../bin/cli', function(err) {
+  exec('../bin/cli', function (err) {
     if (err) {
       process.stderr.write(err);
       process.exit(1);
@@ -111,13 +111,13 @@ test('executes as cli with matching object', function(t) {
   });
 });
 
-test('executes as cli with unmatching object', function(t) {
+test('executes as cli with unmatching object', function (t) {
   var buildrc2 = {
     'random': 'this is random',
     'blah': 'hey'
   };
   setRightPath();
-  exec('../bin/cli', function(err) {
+  exec('../bin/cli', function (err) {
     if (err) {
       process.stderr.write(err);
       process.exit(1);

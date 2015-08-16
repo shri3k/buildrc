@@ -1,10 +1,9 @@
 {
-  "name": "buildscript",
+  "name": "buildrc",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple tool to merge externalized script object into package.json",
   "main": "lib/index.js",
   "dependencies": {
-    "eslint": "^0.24.1",
     "default": "^0.1.1"
   },
   "bin": {
@@ -12,16 +11,20 @@
   },
   "devDependencies": {
     "babel": "^5.8.21",
+    "eslint": "^0.24.1",
+    "jscs": "^2.1.0",
     "tape": "^4.0.3",
     "winston": "^1.0.1"
   },
   "scripts": {
-    "babel": "babel tests/src/*.js --out-dir ./",
+    "babel:lib": "babel lib/src/*.js -o lib/index.js",
+    "babel:test": "babel tests/src/*.js -o tests/index.js",
     "lint": "eslint ./",
     "jscs": "jscs ./",
     "linters": "npm run lint && npm run jscs",
-    "test:dev": "npm run babel && tape tests/src/*.js",
-    "test": "npm run linters && tape tests/src/*.js"
+    "babel": "npm run babel:lib && npm run babel:test",
+    "test:dev": "npm run babel && test && tape tests/*.js",
+    "test": "npm run babel && npm run linters && tape tests/*.js"
   },
   "repository": {
     "type": "git",

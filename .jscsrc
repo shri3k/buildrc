@@ -1,6 +1,6 @@
 {
   "preset": "airbnb",
-  "excludeFiles": ["tmp/**"],
+  "excludeFiles": ["tmp/**", "node_modules/**/*.js", "lib/*.js", "tests/*.js"],
   "requirePaddingNewLinesAfterBlocks": null,
   "requireTrailingComma": null,
   "disallowQuotedKeysInObjects": null
