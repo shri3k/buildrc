@@ -24,18 +24,18 @@ npm install buildrc #install it as lib
 ### cli
 ```bash
 echo '{"start":"node index.js", "lint":"eslint ./"}' >> .buildrc;
-buildrc
+build
 ```
 or
 
 ```bash
 echo '{"start":"node index.js", "lint":"eslint ./"}' >> .myscript;
-buildrc .myscript
+build .myscript
 ```
 ### lib
 ```js
-var buildrc = require('buildrc');
-buildrc('./.buildrc').then(function(){
+var build = require('buildrc');
+build('./.buildrc').then(function(){
   //do your thing here
 });
 ```
