@@ -1,6 +1,6 @@
 {
   "name": "buildrc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple tool to merge externalized script object into package.json",
   "main": "lib/index.js",
   "dependencies": {
