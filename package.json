@@ -28,13 +28,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sinkingshriek/buildscript.git"
+    "url": "git+https://github.com/sinkingshriek/buildrc.git"
   },
   "author": "Yojan Shrestha",
   "preferGlobal": true,
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sinkingshriek/buildscript/issues"
+    "url": "https://github.com/sinkingshriek/buildrc/issues"
   },
-  "homepage": "https://github.com/sinkingshriek/buildscript#readme"
+  "homepage": "https://github.com/sinkingshriek/buildrc#readme"
 }
