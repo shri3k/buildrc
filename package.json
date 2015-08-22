@@ -13,8 +13,7 @@
     "babel": "^5.8.21",
     "eslint": "^1.1.0",
     "jscs": "^2.1.0",
-    "tape": "^4.0.3",
-    "winston": "^1.0.1"
+    "tape": "^4.0.3"
   },
   "scripts": {
     "babel:lib": "babel lib/src/*.js -o lib/index.js",
