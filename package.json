@@ -17,13 +17,14 @@
   },
   "scripts": {
     "babel:lib": "babel lib/src/*.js -o lib/index.js",
-    "babel:test": "babel tests/src/*.js -o tests/index.js",
+    "babel:test": "babel tests/src/ -d tests/",
     "lint": "eslint ./",
     "jscs": "jscs ./",
     "linters": "npm run lint && npm run jscs",
     "babel": "npm run babel:lib && npm run babel:test",
     "test:dev": "npm run babel && test && tape tests/*.js",
-    "test": "npm run babel && npm run linters && tape tests/*.js"
+    "test": "npm run babel && npm run linters && tape tests/index.js",
+    "publish": "npm run test && tape tests/postpublish.js"
   },
   "repository": {
     "type": "git",
